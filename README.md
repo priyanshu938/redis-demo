@@ -9,6 +9,13 @@ Small Node.js demo project showing how Redis can be used as a cache in two commo
 
 - Node.js 18+
 - Redis running on `localhost:6379`
+- PostgreSQL running on `localhost:5432` for the product demo
+
+This project expects the following Postgres database settings:
+
+- database: `mydb`
+- user: `user`
+- password: `pass`
 
 ## Install
 
@@ -28,6 +35,14 @@ To open the Redis CLI inside that container:
 
 ```bash
 docker exec -it redis-stack redis-cli
+```
+
+## Start Postgres
+
+If you want to run Postgres in Docker with the credentials used by this project:
+
+```bash
+docker run -d --name postgres-db -e POSTGRES_USER=user -e POSTGRES_PASSWORD=pass -e POSTGRES_DB=mydb -p 5432:5432 postgres:16
 ```
 
 ## Demo 1: Cache external API responses
